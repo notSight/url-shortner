@@ -16,5 +16,8 @@ async function hanldeGenerateNewShortURL(req,res){
     return res.status(201).json({ Id: shortId })
 }
 
+// async function handleRedirectToOriginalURL(req,res){}
+
+
 module.exports = { hanldeGenerateNewShortURL }
 
