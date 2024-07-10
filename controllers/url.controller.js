@@ -13,7 +13,7 @@ async function hanldeGenerateNewShortURL(req,res){
         shortId: shortId,
         visitHistory: []
     })
-    return res.status(201).json({ Id: shortId })
+    return res.render('homepage.ejs', { id:shortId })
 }
 
 async function handleGetAnalytics(req,res){
