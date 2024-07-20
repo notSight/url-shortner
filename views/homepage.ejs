@@ -16,12 +16,12 @@
 <body>
     <h1>URL SHORTNER</h1>
     <% if(locals.id){ %>
-        <p>Your short url is: http://localhost/url/<%= id %></p>
+        <p>Your short url is: http://localhost:3000/url/<%= id %></p>
     <% } %>
     <form method="POST" action="/url">
         <label>Enter your original url</label>
         <input type="text" name="url" placeholder="http://example.com" />
-        <button type="button">Generate</button>
+        <button type="submit">Generate</button>
     </form>
 </body>
 </html>
