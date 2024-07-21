@@ -4,25 +4,145 @@
     <style>
         body {
             font-family: "Montserrat";
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #EDDCD9;
+            border: 2px solid #264143;
+            border-radius: 20px;
+            box-shadow: 3px 4px 0px 1px #E99F4C;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .title {
+            color: #264143;
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .form_group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .form_style {
+            outline: none;
+            border: 2px solid #264143;
+            box-shadow: 3px 4px 0px 1px #E99F4C;
+            width: 100%;
+            padding: 12px 10px;
+            border-radius: 4px;
+            font-size: 15px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .form_style:focus {
+            transform: translateY(4px);
+            box-shadow: 1px 2px 0px 0px #E99F4C;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 290px;
+            font-size: 15px;
+            background: #DE5499;
+            border: 2px solid #264143;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px 0px #E99F4C;
+            cursor: pointer;
+            text-decoration: none;
+            color: #264143;
+            text-align: center;
+            display: inline-block;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #CC4477;
+            box-shadow: 2px 2px 0px 0px #CC4477;
+        }
+
+        .link {
+            font-weight: 800;
+            color: #264143;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #DE5499;
+            border: 2px solid #264143;
+            border-radius: 10px;
+            box-shadow: 3px 3px 0px 0px #E99F4C;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .link:hover {
+            background-color: #CC4477;
+            box-shadow: 2px 2px 0px 0px #CC4477;
+        }
+
+        .bottom_links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 290px;
+        }
+
+        .sub_title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .message {
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .logged_in_user {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #264143;
         }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME PAGE</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Home Page</title>
 </head>
 <body>
-    <h1>URL SHORTNER</h1>
-    <% if(locals.id){ %>
-        <p>Your short url is: http://localhost:3000/url/<%= id %></p>
-    <% } %>
-    <form method="POST" action="/url">
-        <label>Enter your original url</label>
-        <input type="text" name="url" placeholder="http://example.com" />
-        <button type="submit">Generate</button>
-    </form>
+    <div class="container">
+        <p class="title">URL SHORTENER</p>
+        <% if(locals.id){ %>
+            <p class="message">Your short URL is: <a href="http://localhost:3000/url/<%= id %>" class="link" target="_blank">http://localhost:3000/url/<%= id %></a></p>
+        <% } %>
+        <form action="/url" method="POST" class="form_area">
+            <div class="form_group">
+                <label for="url" class="sub_title">Enter your original URL</label>
+                <input type="text" id="url" name="url" class="form_style" placeholder="http://example.com" required>
+            </div>
+            <button type="submit" class="btn">Generate</button>
+        </form>
+    </div>
 </body>
 </html>
-

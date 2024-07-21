@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 const { connectDB } = require('./conectDB.js')
 const URL = require('./models/url.model.js')
+const { restrictToUserLoggedInUserOnly } = require('./middleware/auth.middleware.js')
 const app = express()
 
 const urlRoute = require('./routes/url.routes.js')
@@ -13,8 +15,9 @@ app.set('views', path.resolve('./views'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
-app.use('/url', urlRoute)
+app.use('/url', restrictToUserLoggedInUserOnly, urlRoute)
 app.use('/user', userRoute)
 app.use('/', staticRoute)
 
