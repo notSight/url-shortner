@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const { connectDB } = require('./conectDB.js')
 const URL = require('./models/url.model.js')
 const { restrictToUserLoggedInUserOnly } = require('./middleware/auth.middleware.js')
+
 const app = express()
 
 const urlRoute = require('./routes/url.routes.js')
@@ -37,3 +38,4 @@ app.listen(3000,()=>{
 
 connectDB('mongodb://127.0.0.1:27017/short-url')
 .then(() => console.log('MongoDB connected!!'))
+
